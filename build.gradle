@@ -16,6 +16,7 @@ repositories {
 }
 test {
     useTestNG {
+        jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
         includeGroups 'unit', 'integration'
         options {
             listeners.add('org.testng.reporters.XMLReporter')
@@ -28,6 +29,9 @@ targetCompatibility = 1.6
 
 dependencies {
     compile ("org.projectlombok:lombok:1.14.8")
+    compile ("com.fasterxml.jackson.core:jackson-databind:2.7.2")
+    compile ("org.apache.httpcomponents:httpclient:4.5.2")
+    compile ("commons-io:commons-io:2.4")
     testCompile("org.mockito:mockito-core:1.9.5")
     testCompile("org.springframework:spring-test:4.0.7.RELEASE")
     testCompile("org.testng:testng:6.8.8")
