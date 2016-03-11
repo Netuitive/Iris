@@ -2,12 +2,10 @@ package com.netuitive.iris.entity.wrapper;
 
 import com.netuitive.iris.entity.Attribute;
 import com.netuitive.iris.entity.Element;
-import com.netuitive.iris.entity.Metric;
 import com.netuitive.iris.entity.Relation;
 import com.netuitive.iris.entity.Sample;
 import com.netuitive.iris.entity.Tag;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -33,7 +31,6 @@ public class ElementDecorator {
     private Set<Tag> tags;
     private Set<Relation> relations;
     private Set<Sample> samples;
-    //private Set<MetricDecorator> decoratedMetrics = new HashSet<MetricDecorator>();
     private Map<String, String> netuitiveTags = new TreeMap<String, String>();
     private Map<String, String> sourceTags = new TreeMap<String, String>();
 }

@@ -22,9 +22,11 @@ public class BasicAuthRestClient extends AbstractRestClient{
         String authString = username + ":" + password;
         return new String(Base64.getEncoder().encode(authString.getBytes()));
     }
-    public <T> T sendWithBasicAuth(GenericRequest req){
+    
+    @Override
+    public <T> T send(GenericRequest req){
         Map<String, String> headers = req.getHeaders() == null ? new HashMap<String, String>() : req.getHeaders();
         headers.put("Authorization", "Basic " + basicAuth);
-        return this.send(req.withHeaders(headers));
+        return super.send(req.withHeaders(headers));
     }
 }

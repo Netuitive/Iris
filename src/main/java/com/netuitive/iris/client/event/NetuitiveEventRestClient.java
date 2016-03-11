@@ -24,7 +24,7 @@ public class NetuitiveEventRestClient extends BasicAuthRestClient implements Net
     @Override
     public EventWrapper getEvent(String eventId) {
         String path = EVENTS_ENDPOINT + "/" + eventId;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(EventWrapper.class));
     }
 
@@ -68,7 +68,7 @@ public class NetuitiveEventRestClient extends BasicAuthRestClient implements Net
         if (req.getType() != null) {
             params.put("type", req.getType());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(EventsWrapper.class)
                 .withParams(params));
 

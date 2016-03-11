@@ -59,7 +59,7 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
         if (req.getType() != null) {
             params.put("type", req.getType());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withParams(params)
                 .withReturnType(ElementsWrapper.class));
 
@@ -78,7 +78,7 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
         if (req.getStartTime() != null) {
             params.put("startTime", req.getStartTime().getTime());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withParams(params)
                 .withReturnType(EventsWrapper.class));
     }
@@ -90,7 +90,7 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
         if (req.getMetricFQN() != null) {
             params.put("metricFQN", req.getMetricFQN());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withParams(params)
                 .withReturnType(MetricMetasWrapper.class));
     }
@@ -111,7 +111,7 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
         if (req.getRollup() != null) {
             params.put("rollup", req.getRollup());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withParams(params)
                 .withReturnType(MetricResultsWrapper.class));
     }
@@ -119,7 +119,7 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
     @Override
     public TagWrapper createMetricTag(String elementId, String metricId, TagWrapper tagWrapper) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/metrics/" + metricId + "/tags/";
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.POST, path)
+        return this.send(new GenericRequest(HttpMethod.POST, path)
                 .withBody(tagWrapper)
                 .withReturnType(TagWrapper.class));
     }
@@ -127,27 +127,27 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
     @Override
     public TagsWrapper getMetricTags(String elementId, String metricId) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/metrics/" + metricId + "/tags";
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(TagsWrapper.class));
     }
 
     @Override
     public void deleteMetricTag(String elementId, String metricId, String tag) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/metrics/" + metricId + "/tags/" + tag;
-        this.sendWithBasicAuth(new GenericRequest(HttpMethod.DELETE, path));
+        this.send(new GenericRequest(HttpMethod.DELETE, path));
     }
 
     @Override
     public void updateMetricTag(String elementId, String metricId, String tagName, TagWrapper tagWrapper) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/metrics/" + metricId + "/tags/" + tagName;
-        this.sendWithBasicAuth(new GenericRequest(HttpMethod.PUT, path)
+        this.send(new GenericRequest(HttpMethod.PUT, path)
                 .withBody(tagWrapper));
     }
 
     @Override
     public PoliciesWrapper getPolicies(String elementId) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/policies";
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(PoliciesWrapper.class));
 
     }
@@ -155,7 +155,7 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
     @Override
     public TagWrapper createElementTag(String elementId, TagWrapper tagWrapper) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/tags/";
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.POST, path)
+        return this.send(new GenericRequest(HttpMethod.POST, path)
                 .withReturnType(TagWrapper.class)
                 .withBody(tagWrapper));
 
@@ -164,7 +164,7 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
     @Override
     public TagsWrapper getElementTags(String elementId) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/tags";
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(TagsWrapper.class));
 
     }
@@ -172,14 +172,14 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
     @Override
     public void deleteElementTag(String elementId, String tag) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/tags/" + tag;
-        this.sendWithBasicAuth(new GenericRequest(HttpMethod.DELETE, path));
+        this.send(new GenericRequest(HttpMethod.DELETE, path));
 
     }
 
     @Override
     public void updateElementTag(String elementId, String tagName, TagWrapper tagWrapper) {
         String path = ELEMENTS_ENDPOINT + "/" + elementId + "/tags/" + tagName;
-        this.sendWithBasicAuth(new GenericRequest(HttpMethod.PUT, path)
+        this.send(new GenericRequest(HttpMethod.PUT, path)
                 .withBody(tagWrapper));
 
     }
@@ -187,14 +187,14 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
     @Override
     public void deleteElement(String id) {
         String path = ELEMENTS_ENDPOINT + "/" + id;
-        this.sendWithBasicAuth(new GenericRequest(HttpMethod.DELETE, path));
+        this.send(new GenericRequest(HttpMethod.DELETE, path));
 
     }
 
     @Override
     public ElementWrapper getElement(String id) {
         String path = ELEMENTS_ENDPOINT + "/" + id;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(ElementWrapper.class));
 
     }

@@ -24,7 +24,7 @@ public class NetuitivePolicyRestClient extends BasicAuthRestClient implements Ne
     @Override
     public void delete(String policyId) {
         String path = POLICIES_ENDPOINT + "/" + policyId;
-        this.sendWithBasicAuth(new GenericRequest(HttpMethod.DELETE, path));
+        this.send(new GenericRequest(HttpMethod.DELETE, path));
     }
     
     @Override
@@ -40,7 +40,7 @@ public class NetuitivePolicyRestClient extends BasicAuthRestClient implements Ne
         if (req.getStartTime() != null) {
             params.put("startTime", req.getStartTime().getTime());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withParams(params)
                 .withReturnType(Integer.class));
     }
@@ -48,21 +48,21 @@ public class NetuitivePolicyRestClient extends BasicAuthRestClient implements Ne
     @Override
     public PoliciesWrapper list() {
         String path = POLICIES_ENDPOINT;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(PoliciesWrapper.class));
     }
     
     @Override
     public PolicyWrapper get(String policyId) {
         String path = POLICIES_ENDPOINT + "/" + policyId;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(PolicyWrapper.class));
     }
     
     @Override
     public PolicyWrapper create(PolicyWrapper policy) {
         String path = POLICIES_ENDPOINT;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.POST, path)
+        return this.send(new GenericRequest(HttpMethod.POST, path)
                 .withBody(policy)
                 .withReturnType(PolicyWrapper.class));
     }
@@ -70,7 +70,7 @@ public class NetuitivePolicyRestClient extends BasicAuthRestClient implements Ne
     @Override
     public PolicyWrapper update(String policyId, PolicyWrapper policy) {
         String path = POLICIES_ENDPOINT + "/" + policyId;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.PUT, path)
+        return this.send(new GenericRequest(HttpMethod.PUT, path)
                 .withBody(policy)
                 .withReturnType(PolicyWrapper.class));
     }

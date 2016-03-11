@@ -21,7 +21,7 @@ public class NetuitiveNotificationRestClient extends BasicAuthRestClient impleme
     @Override
     public NotificationWrapper create(NotificationWrapper notificationWrapper) {
         String path = ELEMENTS_ENDPOINT + "/";
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.POST, path)
+        return this.send(new GenericRequest(HttpMethod.POST, path)
                 .withBody(notificationWrapper)
                 .withReturnType(NotificationWrapper.class));
     }
@@ -29,27 +29,27 @@ public class NetuitiveNotificationRestClient extends BasicAuthRestClient impleme
     @Override
     public void delete(Long id) {
         String path = ELEMENTS_ENDPOINT + "/" + id;
-        this.sendWithBasicAuth(new GenericRequest(HttpMethod.DELETE, path));
+        this.send(new GenericRequest(HttpMethod.DELETE, path));
     }
     
     @Override
     public NotificationWrapper get(Long id) {
         String path = ELEMENTS_ENDPOINT + "/" + id;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(NotificationWrapper.class));
     }
     
     @Override
     public NotificationsWrapper list() {
         String path = ELEMENTS_ENDPOINT;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withReturnType(NotificationsWrapper.class));
     }
     
     @Override
     public NotificationWrapper update(Long id, NotificationWrapper notificationWrapper) {
         String path = ELEMENTS_ENDPOINT + "/" + id;
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.PUT, path)
+        return this.send(new GenericRequest(HttpMethod.PUT, path)
                 .withBody(notificationWrapper)
                 .withReturnType(NotificationWrapper.class));
     }
@@ -57,7 +57,7 @@ public class NetuitiveNotificationRestClient extends BasicAuthRestClient impleme
     @Override
     public String sendTestNotification(NotificationWrapper notificationWrapper) {
         String path = ELEMENTS_ENDPOINT + "/test";
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.POST, path)
+        return this.send(new GenericRequest(HttpMethod.POST, path)
                 .withBody(notificationWrapper)
                 .withReturnType(String.class));
     }

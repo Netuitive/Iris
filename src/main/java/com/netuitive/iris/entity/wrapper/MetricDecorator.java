@@ -1,12 +1,9 @@
 package com.netuitive.iris.entity.wrapper;
 
-import com.netuitive.iris.entity.Metric;
 import com.netuitive.iris.entity.SparseDataStrategy;
 import com.netuitive.iris.entity.Tag;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 import lombok.Data;
 
 /**
@@ -16,7 +13,6 @@ import lombok.Data;
 @Data
 public class MetricDecorator {
     
-    //private Metric metric;
     private Long dataSourceId;
     private String id;
     private String fqn;

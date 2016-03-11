@@ -5,4 +5,4 @@ To build:
 ./gradlew build
 
 To test:
-./gradlew -Dusername='{username}' -Dpassword='{password}' -DapiKey='{DapiKey}' -Demail='{email}' clean test
+./gradlew -Dusername='{username}' -Dpassword='{password}' -DapiKey='{apiKey}' -Demail='{email}' clean test

@@ -44,7 +44,7 @@ public class NetuitiveMetricRestClient extends BasicAuthRestClient implements Ne
         if (req.getRollup() != null) {
             params.put("rollup", req.getRollup());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withParams(params)
                 .withReturnType(MetricStatisticsWrapper.class));
     }
@@ -77,7 +77,7 @@ public class NetuitiveMetricRestClient extends BasicAuthRestClient implements Ne
         if (req.getMetricTag() != null) {
             params.put("metricTag", req.getMetricTag());
         }
-        return this.sendWithBasicAuth(new GenericRequest(HttpMethod.GET, path)
+        return this.send(new GenericRequest(HttpMethod.GET, path)
                 .withParams(params)
                 .withReturnType(FqnListWrapper.class));
     }
