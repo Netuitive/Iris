@@ -1,15 +1,21 @@
 group = 'com.netuitive'
+version = '0.0.2'
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
+    dependencies {
+         classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+     }
 }
 
 apply plugin: 'java'
+apply plugin: 'distribution'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'maven'
-apply plugin: 'distribution'
+apply plugin: 'com.bmuschko.nexus'
 
 repositories {
     mavenCentral()
@@ -22,6 +28,50 @@ test {
             listeners.add('org.testng.reporters.XMLReporter')
         }
     }
+}
+
+ extraArchive {
+     sources = true
+     tests = true
+     javadoc = true
+ }
+
+ nexus {
+     sign = true
+ }
+distTar{
+  from 'build/libs'
+}
+distZip{
+  from 'build/libs'
+}
+modifyPom {
+project {
+               name 'Iris'
+               packaging 'jar'
+               description 'Java SDK for the Netuitive REST API'
+               url 'https://github.com/Netuitive/Iris'
+               scm {
+                   url 'https://github.com/Netuitive/Iris.git'
+                   connection 'https://github.com/Netuitive/Iris.git'
+                   developerConnection 'https://github.com/Netuitive/Iris.git'
+               }
+ 
+               licenses {
+                   license {
+                       name 'The Apache Software License, Version 2.0'
+                       url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                       distribution 'repo'
+                   }
+               }
+ 
+               developers {
+                   developer {
+                       id 'jking13'
+                       name 'John King'
+                   }
+               }
+           }
 }
 
 sourceCompatibility = 1.6
