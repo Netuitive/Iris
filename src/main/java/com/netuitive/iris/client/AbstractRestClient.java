@@ -37,18 +37,24 @@ public class AbstractRestClient {
 
     public static final String API_HOST = "api.app.netuitive.com";
     public static final String SCHEME = "https";
-    public static final String BASE_API_URL = SCHEME + "://" + API_HOST;
     private final ObjectMapper mapper;
+    private final String host;
+    private final String scheme;
 
-    public AbstractRestClient() {
+    public AbstractRestClient(String scheme, String host){
+        this.scheme = scheme;
+        this.host = host;
         mapper = new ObjectMapper();
+    }
+    public AbstractRestClient() {
+        this(SCHEME, API_HOST);
     }
 
     public <T> T send(GenericRequest genericReq) {
         HttpRequestBase req = null;
         try {
             URIBuilder builder = new URIBuilder();
-            builder.setScheme("https").setHost(API_HOST).setPath(genericReq.getPath());
+            builder.setScheme(scheme).setHost(host).setPath(genericReq.getPath());
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
             if (genericReq.getParams() != null && !genericReq.getParams().isEmpty()) {
                 for (Map.Entry<String, Object> entry : genericReq.getParams().entrySet()) {

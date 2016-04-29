@@ -17,6 +17,10 @@ public class NetuitiveIngestEventRestClient extends APIKeyRestClient implements 
     public NetuitiveIngestEventRestClient(String apiKey) {
         super(apiKey);
     }
+    
+    public NetuitiveIngestEventRestClient(String scheme, String host, String apiKey) {
+        super(scheme, host, apiKey);
+    }
 
     @Override
     public void ingest(List<IngestEvent> events) {

@@ -30,6 +30,10 @@ public class NetuitiveElementRestClient extends BasicAuthRestClient implements N
         super(username, password);
     }
 
+    public NetuitiveElementRestClient(String scheme, String host, String username, String password) {
+        super(scheme, host, username, password);
+    }
+
     @Override
     public ElementsWrapper listElements(ListElementsRequest req) {
         String path = ELEMENTS_ENDPOINT + "/";

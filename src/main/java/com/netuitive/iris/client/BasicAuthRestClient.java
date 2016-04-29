@@ -18,6 +18,11 @@ public class BasicAuthRestClient extends AbstractRestClient{
         this.basicAuth = contructBasicAuth(username, password);
     }
     
+    public BasicAuthRestClient(String scheme, String host, String username, String password) {
+        super(scheme, host);
+        this.basicAuth = contructBasicAuth(username, password);
+    }
+    
     private String contructBasicAuth(String username, String password) {
         String authString = username + ":" + password;
         return new String(Base64.getEncoder().encode(authString.getBytes()));

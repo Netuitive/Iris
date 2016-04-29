@@ -17,6 +17,10 @@ public class NetuitiveNotificationRestClient extends BasicAuthRestClient impleme
     public NetuitiveNotificationRestClient(String username, String password) {
         super(username, password);
     }
+
+    public NetuitiveNotificationRestClient(String scheme, String host, String username, String password) {
+        super(scheme, host, username, password);
+    }
     
     @Override
     public NotificationWrapper create(NotificationWrapper notificationWrapper) {

@@ -14,6 +14,11 @@ public class APIKeyRestClient extends AbstractRestClient{
         this.apiKey = apiKey;
     }
     
+    public APIKeyRestClient(String scheme, String host, String apiKey) {
+        super(scheme, host);
+        this.apiKey = apiKey;
+    }
+    
     public String getApiKey(){
         return apiKey;
     }

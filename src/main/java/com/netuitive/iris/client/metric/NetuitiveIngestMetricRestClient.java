@@ -19,6 +19,10 @@ public class NetuitiveIngestMetricRestClient extends APIKeyRestClient implements
         super(apiKey);
     }
 
+    public NetuitiveIngestMetricRestClient(String scheme, String host, String apiKey) {
+        super(scheme, host, apiKey);
+    }
+
     @Override
     public void ingest(IngestRequest req) {
         String path = INGEST_ENDPOINT + "/" + this.getApiKey();

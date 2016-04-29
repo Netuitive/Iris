@@ -22,6 +22,10 @@ public class NetuitiveMetricRestClient extends BasicAuthRestClient implements Ne
         super(username, password);
     }
 
+    public NetuitiveMetricRestClient(String scheme, String host, String username, String password) {
+        super(scheme, host, username, password);
+    }
+
     @Override
     public MetricStatisticsWrapper getMetricStatistics(GetMetricStatisticsRequest req) {
         String path = METRICS_ENDPOINT + "/statistics";

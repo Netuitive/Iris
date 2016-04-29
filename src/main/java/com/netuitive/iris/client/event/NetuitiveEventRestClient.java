@@ -21,6 +21,10 @@ public class NetuitiveEventRestClient extends BasicAuthRestClient implements Net
         super(username, password);
     }
 
+    public NetuitiveEventRestClient(String scheme, String host, String username, String password) {
+        super(scheme, host, username, password);
+    }
+
     @Override
     public EventWrapper getEvent(String eventId) {
         String path = EVENTS_ENDPOINT + "/" + eventId;

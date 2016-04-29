@@ -20,6 +20,10 @@ public class NetuitivePolicyRestClient extends BasicAuthRestClient implements Ne
     public NetuitivePolicyRestClient(String username, String password) {
         super(username, password);
     }
+
+    public NetuitivePolicyRestClient(String scheme, String host, String username, String password) {
+        super(scheme, host, username, password);
+    }
     
     @Override
     public void delete(String policyId) {
