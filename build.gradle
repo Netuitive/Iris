@@ -49,6 +49,7 @@ modifyPom {
 project {
                name 'iris'
                packaging 'jar'
+               artifactId 'iris'
                description 'Java SDK for the Netuitive REST API'
                url 'https://github.com/Netuitive/Iris'
                scm {
