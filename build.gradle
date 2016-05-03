@@ -1,5 +1,5 @@
 group = 'com.netuitive'
-version = '0.0.3'
+version = '0.0.4'
 buildscript {
     repositories {
         mavenCentral()
@@ -37,7 +37,7 @@ test {
  }
 
  nexus {
-     sign = true
+     sign = false
  }
 distTar{
   from 'build/libs'
@@ -47,7 +47,7 @@ distZip{
 }
 modifyPom {
 project {
-               name 'Iris'
+               name 'iris'
                packaging 'jar'
                description 'Java SDK for the Netuitive REST API'
                url 'https://github.com/Netuitive/Iris'

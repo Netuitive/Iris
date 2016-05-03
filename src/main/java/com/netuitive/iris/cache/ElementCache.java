@@ -37,9 +37,9 @@ public class ElementCache {
 
     public void addElement(Element add) {
         synchronized (MAP_LOCK) {
-            Element old = this.elements.get(add.getFqn());
+            Element old = this.elements.get(add.getId());
             if (old == null) {
-                this.elements.put(add.getFqn(), add);
+                this.elements.put(add.getId(), add);
             }
             else{
                 old.mergeData(add);
