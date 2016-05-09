@@ -1,8 +1,17 @@
-# Iris
-Java library to allow communication with Netuitive's Rest API. Full documentation can be found at: https://help.app.netuitive.com/Content/Misc/API/api_getting_started.htm?Highlight=api
+Iris
+=====
 
-To build:
-./gradlew build
+Iris is a Java library that allows communication with Netuitive's Rest API. If you have a [Netuitive](https://www.netuitive.com) account and you want to explore Netuitive's REST API and test some requests, go [here](https://app.netuitive.com/api/external.html).
 
-To test:
-./gradlew -Dusername='{username}' -Dpassword='{password}' -DapiKey='{apiKey}' -Demail='{email}' clean test
+See our [API docs](https://help.app.netuitive.com/Content/Misc/API/api_getting_started.htm) for more information, or contact Netuitive support at [support@netuitive.com](mailto:support@netuitive.com).
+
+Building Iris
+--------------
+
+    ./gradlew build
+
+
+Testing Iris
+-------------
+
+    ./gradlew -Dusername='{username}' -Dpassword='{password}' -DapiKey='{apiKey}' -Demail='{email}' clean test
