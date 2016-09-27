@@ -26,7 +26,7 @@ public class ResponseEvent {
 
     private EventCategory category;
 
-    private Map<String, String> data;
+    private Map<String, Object> data;
 
     private String elementId;
 
@@ -38,9 +38,9 @@ public class ResponseEvent {
 
     private String elementLocation;
 
-    private Map<String, String> elementTags;
+    private Map<String, Object> elementTags;
     
-    private Map<String, String> eventTags;
+    private Map<String, Object> eventTags;
 
     private Policy policy;
 

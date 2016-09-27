@@ -14,6 +14,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 /**
@@ -31,6 +32,9 @@ public class NetuitivePolicyAndNotificationRestClientTest{
     
     String policyId;
     
+    private Boolean shouldDeleteNotification = false;
+    private Boolean shouldDeletePolicy = false;
+    
     @Test(dependsOnMethods = {"testSendTestNotification"})
     public void testCreateNotification(){
         NotificationWrapper input = new NotificationWrapper();
@@ -38,6 +42,7 @@ public class NetuitivePolicyAndNotificationRestClientTest{
         NotificationWrapper output = notificationClient.create(input);
         assertNotNull(output.getNotification().getId());
         notificationId = output.getNotification().getId();
+        shouldDeleteNotification = true;
     }
     
     @Test
@@ -82,6 +87,7 @@ public class NetuitivePolicyAndNotificationRestClientTest{
         PolicyWrapper output = policyClient.create(input);
         assertNotNull(output.getPolicy().getId());
         policyId = output.getPolicy().getId();
+        shouldDeletePolicy = true;
     }
     
     @Test(dependsOnMethods = {"testUpdatePolicy"})
@@ -122,12 +128,25 @@ public class NetuitivePolicyAndNotificationRestClientTest{
     
     @Test(dependsOnMethods = {"testGetNumberOfEventsByPolicy", "testListPolicies", "testGetPolicy"})
     public void testDeletePolicy(){
+        shouldDeletePolicy = false;
         policyClient.delete(policyId);
     }
     
     @Test(dependsOnMethods = {"testDeletePolicy", "testGetNotification", "testGetNotifications"})
     public void testDeleteNotification(){
+        shouldDeleteNotification = false;
         notificationClient.delete(notificationId);
+    }
+    
+    //in case any tests fail we still want to delete the objects we made
+    @AfterClass
+    public void cleanup(){
+        if(shouldDeletePolicy){
+            this.testDeletePolicy();
+        }
+        if(shouldDeleteNotification){
+            this.testDeleteNotification();
+        }
     }
     
 }
