@@ -19,6 +19,8 @@ import com.netuitive.iris.entity.wrapper.MetricResultsWrapper;
 import com.netuitive.iris.entity.wrapper.TagWrapper;
 import com.netuitive.iris.entity.wrapper.TagsWrapper;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import org.testng.annotations.Test;
@@ -35,27 +37,45 @@ public class NetuitiveElementRestClientTest{
     private String elementId;
     
     private String metricId;
+    
+    private static final long ELEMENT_CREATION_WAIT_TIME = 1000 * 60 * 7;//7 minutes 
 
     @Test
     public void testGetElements() throws JsonProcessingException {
-        ElementsWrapper elements = client.listElements(new ListElementsRequest());
-        Boolean found = false;
-        for (ElementDecorator dec : elements.getElements()) {
-            if (dec.getFqn().equals("Iris Element")) {
-                elementId = dec.getId();
-                Iterator<MetricDecorator> iterator = dec.getMetrics().iterator();
-                while(iterator.hasNext()){
-                    MetricDecorator metricDec = iterator.next();
-                    if(metricDec.getFqn().equals("iris.metric")){
-                        metricId = metricDec.getId();
-                        found = true;
-                        break;
-                    }
-                }
-                break;
+        
+        Boolean found = checkElements();
+        if (!found) {
+            try {
+                Thread.sleep(ELEMENT_CREATION_WAIT_TIME);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
             }
+            found = checkElements();
         }
         assertTrue(found);
+    }
+    
+    private Boolean checkElements() {
+        ElementsWrapper elements = client.listElements(new ListElementsRequest());
+        Boolean found = false;
+        if (elements != null && elements.getElements() != null) {
+            for (ElementDecorator dec : elements.getElements()) {
+                if (dec.getFqn().equals("Iris Element")) {
+                    elementId = dec.getId();
+                    Iterator<MetricDecorator> iterator = dec.getMetrics().iterator();
+                    while (iterator.hasNext()) {
+                        MetricDecorator metricDec = iterator.next();
+                        if (metricDec.getFqn().equals("iris.metric")) {
+                            metricId = metricDec.getId();
+                            found = true;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        return found;
     }
 
     @Test(dependsOnMethods = {"testGetElements"})
