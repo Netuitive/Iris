@@ -105,11 +105,9 @@ public class AbstractRestClient {
 
     private void setEntity(HttpEntityEnclosingRequestBase req, Object obj) {
         try {
-            req.setEntity(new StringEntity(mapper.writeValueAsString(obj)));
+            req.setEntity(new StringEntity(mapper.writeValueAsString(obj), "UTF-8"));
             req.setHeader(new BasicHeader("Content-Type", "application/json"));
         } catch (JsonProcessingException ex) {
-            throw new RequestException("unable to parse request body", ex);
-        } catch (UnsupportedEncodingException ex) {
             throw new RequestException("unable to parse request body", ex);
         }
     }
