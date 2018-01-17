@@ -21,7 +21,7 @@ import org.testng.annotations.Test;
  *
  * @author john.king
  */
-@Test(groups = "unit")
+@Test(groups = "experiment", enabled = false)
 public class NetuitivePolicyAndNotificationRestClientTest{
     
     private final NetuitiveNotificationRestClient notificationClient = new NetuitiveNotificationRestClient(System.getProperty("username"), System.getProperty("password"));
