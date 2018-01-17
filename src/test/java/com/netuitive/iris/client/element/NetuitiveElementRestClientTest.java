@@ -29,7 +29,7 @@ import org.testng.annotations.Test;
  *
  * @author john.king
  */
-@Test(groups = "unit")
+@Test(groups = "experiment", enabled = false)
 public class NetuitiveElementRestClientTest{
 
     private final NetuitiveElementRestClient client = new NetuitiveElementRestClient(System.getProperty("username"), System.getProperty("password"));;

@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
  *
  * @author john.king
  */
-@Test(groups = "unit")
+@Test(groups = "experiment", enabled = false)
 public class NetuitiveEventRestClientTest{
     
     private final NetuitiveEventRestClient client = new NetuitiveEventRestClient(System.getProperty("username"), System.getProperty("password"));;
