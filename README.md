@@ -1,9 +1,9 @@
 Iris
 =====
 
-Iris is a Java library that allows communication with Netuitive's Rest API. If you have a [Netuitive](https://www.netuitive.com) account and you want to explore Netuitive's REST API and test some requests, go [here](https://app.netuitive.com/api/external.html).
+Iris is a Java library that allows communication with CloudWisdom's Rest API. If you have a [CloudWisdom](https://www.virtana.com/products/cloudwisdom/) account and you want to explore CloudWisdom's REST API and test some requests, go [here](https://us.cloudwisdom.virtana.com/api/external.html).
 
-See our [API docs](https://help.app.netuitive.com/Content/Misc/API/api_getting_started.htm) for more information, or contact Netuitive support at [support@netuitive.com](mailto:support@netuitive.com).
+See our [API docs](https://docs.virtana.com/en/api.html) for more information, or contact CloudWisdom support at [cloudwisdom.support@virtana.com](mailto:cloudwisdom.support@virtana.com).
 
 Building Iris
 --------------
